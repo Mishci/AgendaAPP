@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     root = Tk()
     root.minsize(600, 450)
-    root.maxsize(1350,800)
+    root.maxsize(1350,900)
     root.title("    Agenda FÚ   ")
 
     main = Main_Frame(root)

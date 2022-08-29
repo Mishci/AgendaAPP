@@ -29,7 +29,7 @@ class Weather(Label):
     def return_weather(self, endpoint="https://api.openweathermap.org/data/2.5/weather?"):
         response = requests.get(endpoint, params=self.params)
         self.weather_data = response.json()
-        print(self.weather_data)
+
 
         # using the data to fetch and display current weather icon
         weather_icon_id = self.weather_data['weather'][0]['icon']

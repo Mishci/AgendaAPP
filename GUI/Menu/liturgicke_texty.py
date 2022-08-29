@@ -62,7 +62,7 @@ def log_texts(main_frame):
 
         if "Tužby" in item.text:
             selection = item.parent.find_all_next("p")
-            normal = selection[0].text + "\n" + selection[1].text + "\n \n" + selection[2].text + " " + selection[3].text
+            normal = selection[0].text + "\n" + selection[1].text + "\n \n"
             normal_label = tkinter.Label(text_frame, text=f"{normal} \n", font=('Helvetica', 10, 'normal'))
             normal_label.config(border=0, bg="#7bacc7", wraplength=600, anchor="e", justify=LEFT )
             normal_label.pack()
