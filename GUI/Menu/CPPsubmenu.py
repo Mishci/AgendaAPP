@@ -246,12 +246,12 @@ def abortArchyMenu(event, archy_widget):
 # ********************************** GUI OUTPUT WIDGETS ***************************************************************
 
 # -------------------------DISPLAY SELECTED DATA IN TREEVIEW TABLE ---------------------------
-#TODO > try to separate the function into sep[arate file
+# TODO > try to separate the function into separate file
 def createTreeview(main_frame, displayCols, selection):
     # resetting global checkers
     global iid
     iid = None
-    global  y_coord
+    global y_coord
     y_coord = 0
 
     # 1. creating a custom theme
@@ -326,9 +326,8 @@ def createTreeview(main_frame, displayCols, selection):
         finally the cathed z coordinate of the click is stored it onto global variable y_coord,
         wchich is invoked bz import and used form displaying the context menu via Popup.shommenu function call"""
         global iid
-        # iid = table.focus()
-
         global y_coord
+
         region = table.identify_region(event.x, event.y)  # cathing the "header / cell" identifier
 
         # control for case the heading was focused on click --> reset ycoord to 0, and thus prohibit executing of
@@ -339,7 +338,7 @@ def createTreeview(main_frame, displayCols, selection):
             y_coord = 0
             return
         elif region == "cell":
-            iid = table.identify_row( event.y)
+            iid = table.identify_row(event.y)
             if iid:
                 y_coord = event.y_root
             else:
@@ -353,11 +352,9 @@ def createTreeview(main_frame, displayCols, selection):
         Popup = RighClickMenu(table, tearoff=0)
         Popup.showMenu(event)
 
-
     # 8. binding the click to select , and right mouse click to show popup menu
     table.bind("<Button-1>", select)
     table.bind("<Button-3>", manage_popup)
-
 
 
 # -------------------------COMBOBOX AND BUTTON FOR FILTERING THE PAYING PEOPLE -------------------------

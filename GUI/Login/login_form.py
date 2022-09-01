@@ -96,7 +96,7 @@ class LoginForm(Frame):
             # weather_widget.pack(side="bottom", fill="both", expand=True)
             weather_widget.return_weather() #initializing // the first call when GUI created
             sched = BackgroundScheduler() #running as a separate thread
-            sched.add_job(weather_widget.return_weather, "interval", seconds=5) #circular call of API every 1 hour
+            sched.add_job(weather_widget.return_weather, "interval", seconds=60*30) #circular call of API every 1 hour
 
             sched.start()
 

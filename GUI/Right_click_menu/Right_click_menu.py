@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from tkinter import Menu, LEFT
+from GUI.Right_click_menu.Edit_pane import Edit_Pane
 
 
 class RighClickMenu(Menu):
@@ -20,6 +21,11 @@ class RighClickMenu(Menu):
         from GUI.Menu.CPPsubmenu import iid
         data = self.tree.item (iid, "values")
         print(f"data {data}")
+        columns = self.tree["columns"]
+        print(f"columns = {columns}")
+        output = tuple([(column,data[columns.index(column)]) for column in columns ])
+        print(f"output = {output}" )
+        Edit_pane_toplevel = Edit_Pane( column_data_tuples_list=output )
 
     def delete_item(self):
         print("Vymaž!")
