@@ -18,25 +18,32 @@ class RighClickMenu(Menu):
         self.add_separator()
 
     def edit(self):
-        from GUI.Menu.CPPsubmenu import iid
-        data = self.tree.item (iid, "values")
-        print(f"data {data}")
-        columns = self.tree["columns"]
-        print(f"columns = {columns}")
-        output = tuple([(column,data[columns.index(column)]) for column in columns ])
-        print(f"output = {output}" )
-        Edit_pane_toplevel = Edit_Pane( column_data_tuples_list=output )
+        from GUI.create_treeview import iid
+        from LOGIC.readDataFromZippedExcel import readDataFromZippedExcel
+        select = self.tree.item(iid, "values")  # VALUES FROM SELECTION
+        data = readDataFromZippedExcel()
+        # SEARCHING ALL THE COLUMNS BELONGING TO A PERSON WITH A NAME AND SURNAME SELECTED
+        personal = data.loc[(data["Přijmení"] == select[0]) & (data["Jméno"] == select[1])]
+
+        # GETTING THE COLUMN NAMES + COLUMN VALUES INTO TWO LISTS
+        columns = personal.columns.values
+        personal_data = personal.iloc[0, :].tolist()
+
+        # JOINING THE LISTS INTO TUPLE BY LIST COMPREHENSION
+        output = tuple([(columns[index], personal_data[index]) for index in range(len(columns) - 1)])
+
+        # SENDING THE TUPLE OVER TO EDIT_PANE , THUS CREATING THE EDIT PANE
+        Edit_pane_toplevel = Edit_Pane(column_data_tuples_list=output)
 
     def delete_item(self):
         print("Vymaž!")
 
     def showMenu(self, event):
         try:
-            from GUI.Menu.CPPsubmenu import y_coord, iid
+            from GUI.create_treeview import y_coord, iid
             if y_coord > 0 and iid is not None:
                 self.post(event.x_root, y_coord)
                 print(y_coord)
 
         finally:
             self.grab_release()
-
