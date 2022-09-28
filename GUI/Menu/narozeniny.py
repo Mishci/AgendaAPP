@@ -117,4 +117,4 @@ def searchBirthday(main_frame, modifier, sort, **kwargs):
     # sorting the output by date values in [Nar.] column
     selection = selection.sort_values(by=sort)
     # putting the output into  graphic by creating a treeview
-    createTreeview(main_frame, ["Jméno", "Přijmení", "Adresa", "Nar.", "Let"], selection=selection) #TODO> pridat sloupec "Mesto"
+    createTreeview(main_frame, [ "Přijmení", "Jméno", "Adresa", "Nar.", "Let"], selection=selection) #TODO> pridat sloupec "Mesto"

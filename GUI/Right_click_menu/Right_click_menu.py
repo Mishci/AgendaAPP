@@ -33,7 +33,7 @@ class RighClickMenu(Menu):
         output = tuple([(columns[index], personal_data[index]) for index in range(len(columns) - 1)])
 
         # SENDING THE TUPLE OVER TO EDIT_PANE , THUS CREATING THE EDIT PANE
-        EditPane = Edit_Pane(column_data_tuples_list=output)
+        EditPane = Edit_Pane(column_data_tuples_list=output, tree= self.tree, iid=iid)
 
     def delete_item(self):
         print("Vymaž!")

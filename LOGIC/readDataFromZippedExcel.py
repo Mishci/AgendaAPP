@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from zipfile import ZipFile
-from pandas import read_excel
+import pandas as pd
 from LOGIC.strip_accent import strip_accents
 
 
@@ -20,7 +20,7 @@ def readDataFromZippedExcel():
                          mode="r") as zip:
                 with zip.open(f"excel_back_{strip_accents(userGlobal)}.xlsx", mode="r",
                               pwd=hesloGlobal.encode(encoding="utf-8", errors="xmlcharrefreplace")) as db:
-                    data = read_excel(db)
+                    data = pd.read_excel(db)
                     data.reset_index()
 
                     return data
