@@ -179,8 +179,5 @@ class Edit_Pane(Toplevel):
             row_index += 1
         return None
 
-    def printhello(self):
-        print("Hello")
-
     def disable_close_on_X(self):
         self.destroy()
