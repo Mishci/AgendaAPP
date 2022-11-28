@@ -36,7 +36,7 @@ class LoginForm(Frame):
         self.password_label = Label(self.entries_frame, text="Heslo", padx=10, pady=10, bg="lightblue")
         self.password_label.grid(row=1, column=0)
         entry_password_var = StringVar(self.entries_frame)
-        self.password = Entry(self.entries_frame, textvariable=entry_password_var)
+        self.password = Entry(self.entries_frame, textvariable=entry_password_var, show = "*")
         self.password.grid(row=1, column=1, columnspan=2)
 
         # submit button
@@ -59,7 +59,7 @@ class LoginForm(Frame):
         self.obec_reg_label = Label(self.entries_reg_frame, text="Název NO", padx=10, pady=10, bg="lightblue")
         self.obec_reg_label.grid(row=0, column=0)
         entry_reg_obec_var = StringVar(self.entries_reg_frame)
-        self.obec_reg_entry = Entry(self.entries_reg_frame, textvariable=entry_reg_obec_var)
+        self.obec_reg_entry = Entry(self.entries_reg_frame, textvariable=entry_reg_obec_var, show = "*")
         self.obec_reg_entry.grid(row=0, column=1, columnspan=2)
         self.obec_reg_entry.focus_set()
 
