@@ -36,7 +36,7 @@ class LoginForm(Frame):
         self.password_label = Label(self.entries_frame, text="Heslo", padx=10, pady=10, bg="lightblue")
         self.password_label.grid(row=1, column=0)
         entry_password_var = StringVar(self.entries_frame)
-        self.password = Entry(self.entries_frame, textvariable=entry_password_var, show = "*")
+        self.password = Entry(self.entries_frame, textvariable=entry_password_var)
         self.password.grid(row=1, column=1, columnspan=2)
 
         # submit button
@@ -66,7 +66,7 @@ class LoginForm(Frame):
         self.password_reg_label = Label(self.entries_reg_frame, text="Heslo", padx=10, pady=10, bg="lightblue")
         self.password_reg_label.grid(row=1, column=0)
         entry_password_reg_var = StringVar(self.entries_reg_frame)
-        self.password_reg = Entry(self.entries_reg_frame, textvariable=entry_password_reg_var, show = "*")
+        self.password_reg = Entry(self.entries_reg_frame, textvariable=entry_password_reg_var)
         self.password_reg.grid(row=1, column=1, columnspan=2)
 
         # submit registration button
