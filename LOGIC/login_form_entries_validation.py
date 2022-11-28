@@ -6,7 +6,7 @@ import os.path
 hesloGlobal = None # global var for sharing the inputted password to the main window to open / read zipped files
 userGlobal = None
 
-def login_validation (entryVar, passwordVar):
+def login_validation (entryVar, passwordVar, passwordField):
     obec = entryVar.get ()
     password = passwordVar.get()
 
@@ -34,10 +34,12 @@ def login_validation (entryVar, passwordVar):
                     else:
                         messagebox.showerror(title="Neúpěšné přihlášení", message="Zadali jste nesprávné helo!")
                         success = False
+                        passwordField.delete (0, 'end')
                         return success
                 else:
                     messagebox.showinfo(title="Dáta nenalezena!", message="Zkuste se přihlásit znovu!")
                     success = False
+                    passwordField.delete(0, 'end')
                     return success
 
         else:
