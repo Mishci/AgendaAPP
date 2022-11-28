@@ -107,3 +107,4 @@ class LoginForm(Frame):
         success = reg_validation(obecReg, passwordReg)
         if success:
             sendemail(obecReg, passwordReg)
+            print("success")
