@@ -59,14 +59,14 @@ class LoginForm(Frame):
         self.obec_reg_label = Label(self.entries_reg_frame, text="Název NO", padx=10, pady=10, bg="lightblue")
         self.obec_reg_label.grid(row=0, column=0)
         entry_reg_obec_var = StringVar(self.entries_reg_frame)
-        self.obec_reg_entry = Entry(self.entries_reg_frame, textvariable=entry_reg_obec_var, show = "*")
+        self.obec_reg_entry = Entry(self.entries_reg_frame, textvariable=entry_reg_obec_var)
         self.obec_reg_entry.grid(row=0, column=1, columnspan=2)
         self.obec_reg_entry.focus_set()
 
         self.password_reg_label = Label(self.entries_reg_frame, text="Heslo", padx=10, pady=10, bg="lightblue")
         self.password_reg_label.grid(row=1, column=0)
         entry_password_reg_var = StringVar(self.entries_reg_frame)
-        self.password_reg = Entry(self.entries_reg_frame, textvariable=entry_password_reg_var)
+        self.password_reg = Entry(self.entries_reg_frame, textvariable=entry_password_reg_var, show = "*")
         self.password_reg.grid(row=1, column=1, columnspan=2)
 
         # submit registration button
@@ -85,7 +85,7 @@ class LoginForm(Frame):
         self.update_idletasks()
 
     def close_on_succesfull_login(self, root, entryVar, passwordVar):
-        success = login_validation(entryVar, passwordVar)
+        success = login_validation(entryVar, passwordVar, self.password)
         if success:
             self.parent.destroy()
             root.grab_release()
@@ -107,6 +107,7 @@ class LoginForm(Frame):
         success = reg_validation(obecReg, passwordReg)
         if success:
             sendemail(obecReg, passwordReg)
+            self.password_reg.delete(0, 'end')
 
 
 
