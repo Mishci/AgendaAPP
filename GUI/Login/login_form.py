@@ -108,6 +108,10 @@ class LoginForm(Frame):
             sched.start()
 
     def close_on_succesfull_registration(self, obecReg, passwordReg, email):
+        """zkus ověřit email. jestli je email v pořádku, zpusti reg_validation a nastav proměnnou reg_valid podle
+        výstupu reg_validation funkce: jestli proběhne všechno v pořádku a všechna pole jhsou vyplněna,
+        vytvoř adresáře a personal.json soubor. Pouze pokud byl email vyhodnocen jako platný a  vyhodnotila se úspěšně registrační funkce,
+        odešli email s pčihlašovacími daty"""
         valid_email = False
         reg_valid = False
         if valid_email is not True and reg_valid is not True:
@@ -116,7 +120,7 @@ class LoginForm(Frame):
                 reg_valid = True if reg_validation(obecReg, passwordReg) else False
 
         if reg_valid & valid_email:
-            sendemail(obecReg, passwordReg)
+            sendemail(obecReg, passwordReg, email)
             messagebox.showinfo(title="P5ihlašovací údaje", message="Vámi zadané přihlašovací údaje vám byly zaslány "
                                                                     "na vámi zadanou emailovu adresu.")
         else:

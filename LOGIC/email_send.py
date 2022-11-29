@@ -7,13 +7,14 @@ from email.mime.text import MIMEText
 
 import os
 
-def sendemail (userName, passwordName):
+def sendemail (userName, passwordName, email):
     name = userName.get()
     pwd = passwordName.get()
+    rec_email = email.get()
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
     sender_email = "agendaFU2022@gmail.com"
-    receiver_email = "michal.devecka@gmail.com"
+    receiver_email = rec_email
     password = os.environ.get("AgendaFU")
     print (password)
 
